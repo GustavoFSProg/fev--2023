@@ -9,7 +9,7 @@ async function getAllusers(req: Request, res: Response) {
   try {
     const data = await prisma.users.findMany()
 
-    return res.status(201).json(data)
+    return res.status(201).json({data})
   } catch (error) {
     return res.status(400).json(error)
   }

@@ -9,7 +9,7 @@ async function getAllusers(req: Request, res: Response) {
   try {
     const data = await prisma.users.findMany()
 
-    return res.status(201).json({data})
+    return res.status(201).json(data)
   } catch (error) {
     return res.status(400).json(error)
   }
@@ -23,7 +23,7 @@ async function RegisterUser(req: Request, res: Response) {
     })
 
     if (emailData !== null) {
-      return res.status(200).send({mdg: "Email ja cadastrado"})
+      return res.status(200).send({msg: "Email ja cadastrado"})
     }
 
     await prisma.users.create({
@@ -53,6 +53,17 @@ async function UpdateUser(req: Request, res: Response) {
 
       },
     })
+
+    return res.status(201).json({ msg: 'Success!!!' })
+  } catch (error) {
+    return res.status(400).json(error)
+  }
+}
+
+
+async function DeleteAllUser(req: Request, res: Response) {
+  try {
+    await prisma.users.deleteMany()
 
     return res.status(201).json({ msg: 'Success!!!' })
   } catch (error) {
@@ -99,4 +110,4 @@ async function Login(req: Request, res: Response) {
 }
 
 
-export default { getAllusers, Login, UpdateUser,DeleteUser, RegisterUser }
+export default { DeleteAllUser, getAllusers, Login, UpdateUser,DeleteUser, RegisterUser }

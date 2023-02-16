@@ -8,6 +8,7 @@ routes.post('/register-users', usersControler.RegisterUser)
 routes.post('/login', usersControler.Login)
 routes.put('/update-users/:id', usersControler.UpdateUser)
 routes.delete('/delete-users/:id', usersControler.DeleteUser)
+routes.delete('/delete-all', usersControler.DeleteUser)
 
 
 export default routes

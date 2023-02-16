@@ -4,14 +4,15 @@
 generator client {
   provider = "prisma-client-js"
 }
-
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "mongodb"
+  url      = env("DATABASE")
 }
 
+
+
 model Users {
-  id String @id   @default(uuid())
+  id          String       @id @default(uuid()) @map("_id")
   email String 
   name String?
   password String
